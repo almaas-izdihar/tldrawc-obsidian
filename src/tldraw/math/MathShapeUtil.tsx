@@ -14,14 +14,6 @@ const PADDING = 16
 const MIN_W = 48
 const MIN_H = 40
 
-function renderLatex(latex: string) {
-	return katex.renderToString(latex, {
-		throwOnError: false,
-		displayMode: true,
-		output: 'htmlAndMathml',
-	})
-}
-
 function MathShapeView({ shape }: { shape: MathShape }) {
 	const editor = useEditor()
 	const { latex, w, h } = shape.props
@@ -34,24 +26,29 @@ function MathShapeView({ shape }: { shape: MathShape }) {
 	// Only a blur that follows a real focus may end the edit. The browser moves focus to the canvas
 	// right after the pointerdown that started the edit, which would otherwise close it at once.
 	const hasHadFocusRef = React.useRef(false)
-	const html = React.useMemo(() => renderLatex(latex || '\\text{double-click to edit}'), [latex])
 
-	// Fit the shape to its rendered equation when the source changes, so that it doesn't need to
-	// be resized by hand. Resizing afterwards is still respected until the source changes again.
+	// Render the equation, and unless it is being edited, fit the shape to it so that it doesn't need
+	// to be resized by hand. A manual resize is respected until the source changes again.
 	React.useLayoutEffect(() => {
-		if (isEditing || editor.getIsReadonly()) return
 		const el = contentRef.current
 		if (!el) return
+		katex.render(latex || '\\text{double-click to edit}', el, {
+			throwOnError: false,
+			displayMode: true,
+			output: 'htmlAndMathml',
+		})
+		if (isEditing || editor.getIsReadonly()) return
+		const current = editor.getShape<MathShape>(shape.id)
+		if (!current) return
 		const nextW = Math.max(MIN_W, Math.ceil(el.scrollWidth) + PADDING * 2)
 		const nextH = Math.max(MIN_H, Math.ceil(el.scrollHeight) + PADDING * 2)
-		if (Math.abs(nextW - w) < 2 && Math.abs(nextH - h) < 2) return
+		if (Math.abs(nextW - current.props.w) < 2 && Math.abs(nextH - current.props.h) < 2) return
 		editor.updateShape<MathShape>({
 			id: shape.id,
 			type: 'math',
 			props: { w: nextW, h: nextH },
 		})
-		// eslint-disable-next-line @eslint-react/exhaustive-deps
-	}, [latex, isEditing])
+	}, [editor, isEditing, latex, shape.id])
 
 	React.useEffect(() => {
 		if (!isEditing) {
@@ -82,9 +79,6 @@ function MathShapeView({ shape }: { shape: MathShape }) {
 			<div
 				ref={contentRef}
 				style={{ display: 'inline-block', whiteSpace: 'nowrap', opacity: latex ? 1 : 0.4 }}
-				// KaTeX output is generated from the LaTeX source by KaTeX itself with `trust` off.
-				// eslint-disable-next-line @eslint-react/dom-no-dangerously-set-innerhtml
-				dangerouslySetInnerHTML={{ __html: html }}
 			/>
 			{isEditing && (
 				<textarea
