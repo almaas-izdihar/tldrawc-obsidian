@@ -2,7 +2,7 @@ import { Platform } from 'obsidian'
 import * as React from 'react'
 import { useEffect, useMemo } from 'react'
 import { createRoot } from 'react-dom/client'
-import { lockZoomIcon } from 'src/assets/data-icons'
+import { lockZoomIcon, mathToolIcon } from 'src/assets/data-icons'
 import { TldrawInObsidianPluginProvider } from 'src/plugin/app/contexts/plugin'
 import { useClickAwayListener } from 'src/plugin/app/hooks/useClickAwayListener'
 import { useTldrawAppEffects } from 'src/plugin/app/hooks/useTldrawAppHook'
@@ -26,6 +26,8 @@ import { getViewport, saveViewport } from 'src/plugin/viewport-storage'
 import {
 	DefaultMainMenu,
 	DefaultPageMenu,
+	DefaultToolbar,
+	DefaultToolbarContent,
 	DefaultZoomMenu,
 	DefaultZoomMenuContent,
 	Editor,
@@ -48,6 +50,8 @@ import {
 	TLUiAssetUrlOverrides,
 	TLUiEventHandler,
 	TLUiOverrides,
+	useIsToolSelected,
+	useTools,
 	TLUserPreferences,
 	track,
 	useActions,
@@ -60,6 +64,8 @@ import {
 	ZoomToFitMenuItem,
 	ZoomToSelectionMenuItem,
 } from 'tldraw'
+import { pluginShapeUtils, pluginTools } from 'src/tldraw/math'
+import { MATH_TOOL_ID } from 'src/plugin/actions/ui-overrides'
 import PluginKeyboardShortcutsDialog from './components/PluginKeyboardShortcutsDialog'
 import PluginQuickActions from './components/PluginQuickActions'
 
@@ -180,6 +186,16 @@ const components: TLComponents = {
 			<PreferencesGroup />
 		</DefaultMainMenu>
 	),
+	Toolbar: (props) => {
+		const tools = useTools()
+		const isMathSelected = useIsToolSelected(tools[MATH_TOOL_ID])
+		return (
+			<DefaultToolbar {...props}>
+				<DefaultToolbarContent />
+				<TldrawUiMenuItem {...tools[MATH_TOOL_ID]} isSelected={isMathSelected} />
+			</DefaultToolbar>
+		)
+	},
 	KeyboardShortcutsDialog: PluginKeyboardShortcutsDialog,
 	QuickActions: PluginQuickActions,
 	ZoomMenu: () => (
@@ -255,6 +271,7 @@ const TldrawApp = ({
 			...plugin.getIconOverrides(),
 			...iconAssetUrls,
 			[PLUGIN_ACTION_TOGGLE_ZOOM_LOCK]: lockZoomIcon,
+			'tool-math': mathToolIcon,
 		},
 	})
 	// The overrides are created once, so route UI events through a ref to reach the latest handler.
@@ -267,6 +284,8 @@ const TldrawApp = ({
 		...components,
 		...otherComponents,
 	})
+
+	const allTools = React.useMemo(() => [...pluginTools, ...(tools ?? [])], [tools])
 
 	const storeProps = React.useMemo(() => (!store ? undefined : getEditorStoreProps(store)), [store])
 
@@ -447,7 +466,8 @@ const TldrawApp = ({
 				// Set this flag to false when a tldraw document is embed into markdown to prevent it from gaining focus when it is loaded.
 				autoFocus={false}
 				onMount={setAppState}
-				tools={tools}
+				shapeUtils={pluginShapeUtils}
+				tools={allTools}
 				overlayUtils={overlayUtils}
 				licenseKey={TLDRAW_LICENSE_KEY}
 			/>

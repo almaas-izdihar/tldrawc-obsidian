@@ -1,3 +1,4 @@
+import { pluginShapeUtils } from 'src/tldraw/math'
 import React, {
 	ComponentProps,
 	ContextType,
@@ -49,7 +50,7 @@ function PluginTldrawImage({
 	return (
 		<div className="ptlc-tldraw-image" {...{ ...props }}>
 			<TldrawImageContext.Consumer>
-				{(value) => (!value ? <></> : <TldrawImage snapshot={snapshot} {...value.props} />)}
+				{(value) => (!value ? <></> : <TldrawImage snapshot={snapshot} shapeUtils={pluginShapeUtils} {...value.props} />)}
 			</TldrawImageContext.Consumer>
 		</div>
 	)

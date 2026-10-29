@@ -1,4 +1,5 @@
 @import url('tldraw/tldraw.css');
+@import url('styles/katex.css');
 @import url('styles/workaround-obsidian-mobile-navbar.css');
 @import url('styles/audit.css');
 @import url('styles/tldraw-theme-overrides.css');
