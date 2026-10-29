@@ -1,18 +1,13 @@
 import katex from 'katex'
 import * as React from 'react'
-import {
-	BaseBoxShapeUtil,
-	HTMLContainer,
-	RecordProps,
-	T,
-	useEditor,
-	useValue,
-} from 'tldraw'
+import { BaseBoxShapeUtil, HTMLContainer, RecordProps, T, useEditor, useValue } from 'tldraw'
 import { MathShape } from './MathShape'
 
-const PADDING = 16
+const PADDING_X = 16
+const PADDING_Y = 8
 const MIN_W = 48
 const MIN_H = 40
+const FONT_SIZE = 20
 
 function MathShapeView({ shape }: { shape: MathShape }) {
 	const editor = useEditor()
@@ -40,8 +35,8 @@ function MathShapeView({ shape }: { shape: MathShape }) {
 		if (isEditing || editor.getIsReadonly()) return
 		const current = editor.getShape<MathShape>(shape.id)
 		if (!current) return
-		const nextW = Math.max(MIN_W, Math.ceil(el.scrollWidth) + PADDING * 2)
-		const nextH = Math.max(MIN_H, Math.ceil(el.scrollHeight) + PADDING * 2)
+		const nextW = Math.max(MIN_W, Math.ceil(el.scrollWidth) + PADDING_X * 2)
+		const nextH = Math.max(MIN_H, Math.ceil(el.scrollHeight) + PADDING_Y * 2)
 		if (Math.abs(nextW - current.props.w) < 2 && Math.abs(nextH - current.props.h) < 2) return
 		editor.updateShape<MathShape>({
 			id: shape.id,
@@ -78,7 +73,13 @@ function MathShapeView({ shape }: { shape: MathShape }) {
 		>
 			<div
 				ref={contentRef}
-				style={{ display: 'inline-block', whiteSpace: 'nowrap', opacity: latex ? 1 : 0.4 }}
+				className="ptlc-math-content"
+				style={{
+					display: 'inline-block',
+					whiteSpace: 'nowrap',
+					fontSize: FONT_SIZE,
+					opacity: latex ? 1 : 0.4,
+				}}
 			/>
 			{isEditing && (
 				<textarea
