@@ -42,9 +42,7 @@ tldrawc adds an equation shape that renders raw LaTeX with [KaTeX](https://katex
 
 Invalid LaTeX is shown as an error in the shape instead of breaking the drawing.
 
-Limitations:
-
-- Embeds (`![[drawing]]`) and image export of equations have not been verified yet, and may show an empty equation or miss the KaTeX font.
+Equations also render in embeds (`![[drawing]]`) and in image exports.
 
 ## Installing tldrawc
 
