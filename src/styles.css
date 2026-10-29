@@ -571,3 +571,8 @@ div[data-type='tldrawc-read-only'] .view-content.tldrawc-view-content {
 	margin: 0;
 	color: var(--text-muted);
 }
+
+/* KaTeX adds 1em of vertical margin in display mode, which the shape already pads for. */
+.ptlc-math-content .katex-display {
+	margin: 0;
+}
