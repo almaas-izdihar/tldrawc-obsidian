@@ -28,7 +28,7 @@ export default class DownloadManagerModal extends Modal {
 			container:
 				container ??
 				this.contentEl.createDiv({
-					cls: 'ptl-download-job',
+					cls: 'ptlc-download-job',
 				}),
 		}
 		try {
@@ -57,7 +57,7 @@ export default class DownloadManagerModal extends Modal {
 
 	private setFinished(item: DownloadContext & { tFile: TFile }) {
 		item.container.createEl('p', {
-			cls: 'ptl-download-success',
+			cls: 'ptlc-download-success',
 			text: 'Done.',
 		})
 	}
@@ -69,7 +69,7 @@ export default class DownloadManagerModal extends Modal {
 		onRetrySuccess,
 	}: DownloadContext & { error: unknown; onRetrySuccess: (tFile: TFile) => Promise<void> }) {
 		container.createEl('p', {
-			cls: 'ptl-download-error',
+			cls: 'ptlc-download-error',
 			text: errorMessage(error),
 		})
 

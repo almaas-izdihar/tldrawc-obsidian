@@ -97,10 +97,10 @@ export function createEmbedMenu({
 		)
 		.addItem((item) =>
 			editNewTab(item).onClick(() => {
-				openFile('new-tab', 'tldraw-view')
+				openFile('new-tab', 'tldrawc-view')
 			})
 		)
-		.addItem((item) => readOnlyNewTab(item).onClick(() => openFile('new-tab', 'tldraw-read-only')))
+		.addItem((item) => readOnlyNewTab(item).onClick(() => openFile('new-tab', 'tldrawc-read-only')))
 		.addSeparator()
 		.addItem((item) =>
 			item

@@ -10,7 +10,8 @@ import {
 	WorkspaceLeaf,
 } from 'obsidian'
 import { Root } from 'react-dom/client'
-import { Editor, TLDRAW_FILE_EXTENSION } from 'tldraw'
+import { Editor } from 'tldraw'
+import { TLDRAWC_FILE_EXTENSION } from 'src/plugin/document/constants'
 import { createReactStatusBarViewMode } from 'src/plugin/app/components/StatusBarViewMode'
 import createMain from 'src/plugin/app/main/TldrawInObsidian'
 import { TldrawOfflineFileView } from 'src/plugin/views/TldrawOfflineFileView'
@@ -141,7 +142,7 @@ export default class TldrawPlugin extends Plugin {
 		// Change how tldraw files are displayed when reading the document, e.g. when it is embed in another Obsidian document.
 		this.registerMarkdownPostProcessor((e, c) => markdownPostProcessor(this, e, c))
 
-		this.app.embedRegistry.registerExtension('tldr', (context, tFile, _) => {
+		this.app.embedRegistry.registerExtension('tldrc', (context, tFile, _) => {
 			const { component } = createEmbedTldraw({
 				file: tFile,
 				internalEmbedDiv: context.containerEl,
@@ -150,17 +151,9 @@ export default class TldrawPlugin extends Plugin {
 			return component
 		})
 
-		this.register(() => this.app.embedRegistry.unregisterExtension('tldr'))
+		this.register(() => this.app.embedRegistry.unregisterExtension('tldrc'))
 
-		this.registerExtensions(['tldr'], VIEW_TYPE_TLDRAW)
-
-		try {
-			this.registerExtensions(['tldraw'], VIEW_TYPE_TLDRAW_OFFLINE)
-		} catch (e) {
-			// Obsidian throws if another plugin already owns the extension. Explaining that we can't
-			// open these files isn't worth taking the file type away from a plugin that can.
-			console.error(e)
-		}
+		this.registerExtensions(['tldrc'], VIEW_TYPE_TLDRAW)
 
 		const unmount = createMain(this, this.app.dom.statusBarEl)
 		this.register(() => {
@@ -238,13 +231,13 @@ export default class TldrawPlugin extends Plugin {
 			this.app.workspace.on('file-menu', (menu, file, source, leaf) => {
 				if (!(file instanceof TFile)) return
 
-				if (file.path.endsWith(TLDRAW_FILE_EXTENSION)) {
+				if (file.path.endsWith(TLDRAWC_FILE_EXTENSION)) {
 					menu
-						.addItem((item) => pluginMenuLabel(item.setSection('tldraw')))
+						.addItem((item) => pluginMenuLabel(item.setSection('tldrawc')))
 						.addItem((item) => {
 							item
 								.setIcon('edit')
-								.setSection('tldraw')
+								.setSection('tldrawc')
 								.setTitle('Edit as new note')
 								.onClick(async () => {
 									const newFile = await this.createUntitledTldrFile({
@@ -272,7 +265,7 @@ export default class TldrawPlugin extends Plugin {
 				menu.addItem((item) => {
 					item
 						.setIcon(icon)
-						.setSection('tldraw')
+						.setSection('tldrawc')
 						.setTitle(title)
 						.onClick(async () => {
 							await this.updateViewMode(view, leaf)

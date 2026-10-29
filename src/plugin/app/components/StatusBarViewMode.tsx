@@ -13,21 +13,21 @@ const StatusBarViewMode = () => {
 
 	const viewMode = view.mode
 
-	const a = viewMode === VIEW_TYPE_TLDRAW ? 'ptl-viewmode-active' : ''
-	const b = viewMode === VIEW_TYPE_MARKDOWN ? 'ptl-viewmode-active' : ''
-	const c = viewMode === VIEW_TYPE_TLDRAW_READ_ONLY ? 'ptl-viewmode-active' : ''
+	const a = viewMode === VIEW_TYPE_TLDRAW ? 'ptlc-viewmode-active' : ''
+	const b = viewMode === VIEW_TYPE_MARKDOWN ? 'ptlc-viewmode-active' : ''
+	const c = viewMode === VIEW_TYPE_TLDRAW_READ_ONLY ? 'ptlc-viewmode-active' : ''
 
 	const setTldrawView = () => setViewMode(VIEW_TYPE_TLDRAW, 'react')
 	const setMarkdownView = () => setViewMode(VIEW_TYPE_MARKDOWN, 'react')
 	const setTldrawReadOnly = () => setViewMode(VIEW_TYPE_TLDRAW_READ_ONLY, 'react')
 
 	return (
-		<div className="ptl-statusbar-viewmode-box">
-			<div className="ptl-statusbar-viewmode-btn-box">
+		<div className="ptlc-statusbar-viewmode-box">
+			<div className="ptlc-statusbar-viewmode-btn-box">
 				<button
 					type="button"
 					title="View as tldraw"
-					className={`ptl-viewmode-btn ${a}`}
+					className={`ptlc-viewmode-btn ${a}`}
 					onClick={setTldrawView}
 				>
 					TL
@@ -35,7 +35,7 @@ const StatusBarViewMode = () => {
 				<button
 					type="button"
 					title="View as markdown"
-					className={`ptl-viewmode-btn ${b}`}
+					className={`ptlc-viewmode-btn ${b}`}
 					onClick={setMarkdownView}
 				>
 					MD
@@ -43,7 +43,7 @@ const StatusBarViewMode = () => {
 				<button
 					type="button"
 					title="View as read only"
-					className={`ptl-viewmode-btn ${c}`}
+					className={`ptlc-viewmode-btn ${c}`}
 					onClick={setTldrawReadOnly}
 				>
 					RO

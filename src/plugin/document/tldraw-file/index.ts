@@ -1,4 +1,5 @@
 import { createTLStore, TldrawFile, TLStore } from 'tldraw'
+import { pluginShapeUtils } from 'src/tldraw/math'
 
 /**
  *
@@ -6,7 +7,7 @@ import { createTLStore, TldrawFile, TLStore } from 'tldraw'
  * @returns
  */
 export function createRawTldrawFile(store?: TLStore): TldrawFile {
-	store ??= createTLStore()
+	store ??= createTLStore({ shapeUtils: pluginShapeUtils })
 	return {
 		tldrawFileFormatVersion: 1,
 		schema: store.schema.serialize(),

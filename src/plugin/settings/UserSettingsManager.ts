@@ -35,7 +35,7 @@ export default class UserSettingsManager {
 	}
 	get markdownFileTags() {
 		if (this.settings.file?.insertTags === false) return []
-		return this.settings.file?.customTags ?? ['tldraw']
+		return this.settings.file?.customTags ?? ['tldrawc']
 	}
 
 	#notifyStoreSubscribers() {

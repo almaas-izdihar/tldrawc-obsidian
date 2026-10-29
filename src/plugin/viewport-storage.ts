@@ -1,6 +1,6 @@
 import type { App } from 'obsidian'
 
-const PREFIX = 'tldraw-viewport'
+const PREFIX = 'tldrawc-viewport'
 
 /**
  * `App#saveLocalStorage` keeps entries per vault, so the key only needs the file path.

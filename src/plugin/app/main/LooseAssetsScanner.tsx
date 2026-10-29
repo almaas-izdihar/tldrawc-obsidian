@@ -147,7 +147,7 @@ export function LooseAssetsScanner({
 						),
 					},
 					main: {
-						className: 'ptl-audit-empty',
+						className: 'ptlc-audit-empty',
 						children: <p>No active scan.</p>,
 					},
 				}}
@@ -173,7 +173,7 @@ export function LooseAssetsScanner({
 						),
 					},
 					main: {
-						className: 'ptl-audit-empty',
+						className: 'ptlc-audit-empty',
 						children: <p>No files to process.</p>,
 					},
 				}}
@@ -191,13 +191,13 @@ export function LooseAssetsScanner({
 					children: (
 						<>
 							{isAuditingAll ? (
-								<div className="ptl-audit-status-container">
-									<div className="ptl-audit-status-content">
+								<div className="ptlc-audit-status-container">
+									<div className="ptlc-audit-status-content">
 										<p>Auditing all files... Please wait.</p>
-										<div className="ptl-audit-progress-wrapper">
-											<div className="ptl-audit-progress-bar">
+										<div className="ptlc-audit-progress-wrapper">
+											<div className="ptlc-audit-progress-bar">
 												<div
-													className="ptl-audit-progress-fill"
+													className="ptlc-audit-progress-fill"
 													style={{
 														width: (() => {
 															const [curr, total] = progress.split(' / ').map(Number)
@@ -206,7 +206,7 @@ export function LooseAssetsScanner({
 													}}
 												/>
 											</div>
-											<span className="ptl-audit-progress-text">{progress}</span>
+											<span className="ptlc-audit-progress-text">{progress}</span>
 										</div>
 										<button
 											className="mod-warning"
@@ -237,7 +237,7 @@ export function LooseAssetsScanner({
 													Prune All ({current.data.looseEntries.length})
 												</button>
 											</div>
-											<ul className="ptl-audit-list">
+											<ul className="ptlc-audit-list">
 												{current.data.looseEntries.map((item) => (
 													<AssetListItem
 														key={item.blockCache.id}
@@ -249,13 +249,13 @@ export function LooseAssetsScanner({
 											</ul>
 										</>
 									) : (
-										<p className="ptl-audit-status">No unreferenced assets found in this file.</p>
+										<p className="ptlc-audit-status">No unreferenced assets found in this file.</p>
 									)}
 								</div>
 							) : (
-								<div className="ptl-audit-status-container">
+								<div className="ptlc-audit-status-container">
 									{current?.error ? (
-										<div className="ptl-audit-error">
+										<div className="ptlc-audit-error">
 											<p>Error auditing file:</p>
 											<ErrorMessage error={current.error} />
 										</div>
@@ -272,16 +272,16 @@ export function LooseAssetsScanner({
 				footer: {
 					children: (
 						<>
-							<div className="ptl-audit-file-info">
+							<div className="ptlc-audit-file-info">
 								<div>
 									<h4 style={{ margin: 0 }}>File: {current?.document.path || 'Ready'}</h4>
-									<span className="ptl-audit-progress-text">{progress}</span>
+									<span className="ptlc-audit-progress-text">{progress}</span>
 								</div>
 								{current && (
 									<>
 										<button onClick={() => setShowTldraw(true)}>Show tldraw editor</button>
 										<ModalWrapper
-											className="ptl-modal-tldraw-editor"
+											className="ptlc-modal-tldraw-editor"
 											modalProps={plugin}
 											open={showTldraw}
 											onClose={() => setShowTldraw(false)}
@@ -291,8 +291,8 @@ export function LooseAssetsScanner({
 									</>
 								)}
 							</div>
-							<div className="ptl-audit-footer-bottom">
-								<div className="ptl-audit-footer-actions">
+							<div className="ptlc-audit-footer-bottom">
+								<div className="ptlc-audit-footer-actions">
 									<button onClick={handleBack} disabled={!canGoBack || isAuditingAll}>
 										Back
 									</button>

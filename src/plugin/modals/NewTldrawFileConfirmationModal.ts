@@ -63,11 +63,11 @@ export default class NewTldrawFileConfirmationModal extends SuggestModal<Suggest
 		promptInputContainerParent.createDiv(
 			{
 				text: 'Confirm new file destination',
-				cls: 'modal-title ptl-modal-title-with-icon',
+				cls: 'modal-title ptlc-modal-title-with-icon',
 				prepend: true,
 			},
 			(div) => {
-				setIcon(div.createSpan({ cls: 'ptl-modal-icon', prepend: true }), TLDRAW_ICON_NAME)
+				setIcon(div.createSpan({ cls: 'ptlc-modal-icon', prepend: true }), TLDRAW_ICON_NAME)
 			}
 		)
 
@@ -142,9 +142,9 @@ export default class NewTldrawFileConfirmationModal extends SuggestModal<Suggest
 	}
 
 	renderSuggestion(value: SuggestOption, el: HTMLElement) {
-		const div = el.createDiv({ cls: 'ptl-suggestion-item' })
+		const div = el.createDiv({ cls: 'ptlc-suggestion-item' })
 		setIcon(
-			div.createSpan({ cls: 'ptl-suggestion-item-icon' }),
+			div.createSpan({ cls: 'ptlc-suggestion-item-icon' }),
 			value.choice === 'confirm'
 				? 'check'
 				: value.choice === 'edit'
@@ -167,11 +167,11 @@ export default class NewTldrawFileConfirmationModal extends SuggestModal<Suggest
 		})
 		el.createDiv(
 			{
-				cls: 'ptl-suggestion-label',
+				cls: 'ptlc-suggestion-label',
 			},
 			(div) => {
 				div.createDiv({
-					cls: 'ptl-suggestion-sub-label',
+					cls: 'ptlc-suggestion-sub-label',
 					text:
 						value.folder instanceof TFolder
 							? this.folderPathLabel(value.folder)
@@ -192,7 +192,7 @@ export default class NewTldrawFileConfirmationModal extends SuggestModal<Suggest
 				if (!fileLabel) return
 
 				div.createDiv({
-					cls: 'ptl-suggestion-sub-label',
+					cls: 'ptlc-suggestion-sub-label',
 					text: fileLabel,
 				})
 			}

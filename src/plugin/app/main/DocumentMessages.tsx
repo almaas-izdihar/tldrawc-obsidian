@@ -44,7 +44,7 @@ function DocumentMessagesButtonPortal({ button }: { button: DocumentMessagesButt
 	return (
 		<>
 			{createPortal(
-				<div className="ptl-document-messages-count">{count || undefined}</div>,
+				<div className="ptlc-document-messages-count">{count || undefined}</div>,
 				button.actionEl
 			)}
 			<DocumentMessagesModal

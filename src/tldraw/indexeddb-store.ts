@@ -1,5 +1,5 @@
 // const vars from tldraw source code: packages/editor/src/lib/utils/sync/LocalIndexedDb.ts
-const STORE_PREFIX = 'TLDRAW_DOCUMENT_v2'
+const STORE_PREFIX = 'TLDRAWC_DOCUMENT_v2'
 const DB_VERSION = 4
 const ASSETS_STORE_NAME = 'assets'
 

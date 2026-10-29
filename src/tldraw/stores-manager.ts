@@ -1,5 +1,6 @@
 import { logFn, TLDRAW_STORES_MANAGER_LOGGING } from 'src/utils/logging'
 import { createTLStore, HistoryEntry, TLRecord, TLStore } from 'tldraw'
+import { pluginShapeUtils } from 'src/tldraw/math'
 
 export type StoreInstanceInfo<T> = {
 	instanceId: string
@@ -217,6 +218,7 @@ export default class TldrawStoresManager<MainData, InstanceData> {
 function createSourceStore<Group extends StoreGroup>(storeGroup: Group): TLStore {
 	const snapshot = storeGroup.main.store.getStoreSnapshot()
 	const store = createTLStore({
+		shapeUtils: pluginShapeUtils,
 		snapshot: snapshot,
 	})
 

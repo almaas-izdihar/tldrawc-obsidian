@@ -6,3 +6,12 @@
  */
 export const lockZoomIcon =
 	'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNlYXJjaCBsdWNpZGUtbG9jayBieS1qb24tZGV6LWF0LWdpdGh1YiI+PGRlZnMvPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjxnIHRyYW5zZm9ybT0ibWF0cml4KDAuNzc3Nzc4LCAwLCAwLCAwLjc3Nzc3OCwgMi42MjE3NzYsIDIuNjIxNTgzKSI+PHJlY3Qgd2lkdGg9IjkiIGhlaWdodD0iNS41IiB4PSI2LjI3MiIgeT0iMTAuMjc0IiByeD0iMC44MDMiIHJ5PSIwLjgwMyIvPjxwYXRoIGQ9Ik0gOC4yNzIgMTAuMjc0IEwgOC4yNzIgOC4yNzQgQyA4LjI3MiA2LjM1IDEwLjM1NiA1LjE0NyAxMi4wMjIgNi4xMDkgQyAxMi43OTYgNi41NTYgMTMuMjcyIDcuMzgxIDEzLjI3MiA4LjI3NCBMIDEzLjI3MiAxMC4yNzQiLz48L2c+PC9zdmc+'
+
+/**
+ * Toolbar icon of the equation tool: a radical sign.
+ */
+export const mathToolIcon =
+	'data:image/svg+xml;utf8,' +
+	encodeURIComponent(
+		'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h3l3 7 5-16h7"/></svg>'
+	)

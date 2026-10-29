@@ -39,7 +39,7 @@ function AssetsSettingsGroup({ downloadAll }: { downloadAll: () => void }) {
 					desc: (
 						<>
 							{'Download all assets for offline use'}
-							<code className="ptl-default-code">
+							<code className="ptlc-default-code">
 								{`Vault folder: ${settings.fileDestinations.assetsFolder}`}
 							</code>
 						</>
@@ -66,7 +66,7 @@ function FontAssetsSettingsGroup({ downloadAll }: { downloadAll: () => void }) {
 					desc: (
 						<>
 							{'Download all fonts for offline use'}
-							<code className="ptl-default-code">
+							<code className="ptlc-default-code">
 								{`Vault folder: ${settings.fileDestinations.assetsFolder}/fonts`}
 							</code>
 						</>
@@ -97,7 +97,7 @@ function IconAssetsSettingsGroup({
 					desc: (
 						<>
 							{'Download all icons for offline use'}
-							<code className="ptl-default-code">
+							<code className="ptlc-default-code">
 								{`Vault folder: ${manager.plugin.settingsManager.settings.fileDestinations.assetsFolder}/icons`}
 							</code>
 						</>

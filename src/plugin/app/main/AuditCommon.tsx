@@ -31,19 +31,19 @@ export function AuditLayout({
 	}
 }) {
 	return (
-		<div className={`ptl-audit-container ${className ?? ''}`}>
+		<div className={`ptlc-audit-container ${className ?? ''}`}>
 			{slots?.header && (
-				<header className={`ptl-audit-header ${slots.header.className ?? ''}`}>
+				<header className={`ptlc-audit-header ${slots.header.className ?? ''}`}>
 					{slots.header.children}
 				</header>
 			)}
 			{slots?.main && (
-				<main className={`ptl-audit-main ${slots.main.className ?? ''}`}>
+				<main className={`ptlc-audit-main ${slots.main.className ?? ''}`}>
 					{slots.main.children}
 				</main>
 			)}
 			{slots?.footer && (
-				<footer className={`ptl-audit-footer ${slots.footer.className ?? ''}`}>
+				<footer className={`ptlc-audit-footer ${slots.footer.className ?? ''}`}>
 					{slots.footer.children}
 				</footer>
 			)}
@@ -56,7 +56,7 @@ export function ErrorMessage({ error }: { error: unknown }) {
 
 	if (error instanceof Error) {
 		return (
-			<div className="ptl-error-details">
+			<div className="ptlc-error-details">
 				<div style={{ fontWeight: 'bold', marginBottom: '4px' }}>{error.message}</div>
 				{error.stack && (
 					<div>
@@ -165,20 +165,20 @@ export function AssetListItem({
 	}
 
 	return (
-		<li className="ptl-audit-item">
-			<div className="ptl-audit-item-header">
-				<div className="ptl-audit-item-info">
-					<strong className="ptl-audit-item-id">ID: {asset.blockCache.id}</strong>
-					<span className="ptl-audit-item-line">
+		<li className="ptlc-audit-item">
+			<div className="ptlc-audit-item-header">
+				<div className="ptlc-audit-item-info">
+					<strong className="ptlc-audit-item-id">ID: {asset.blockCache.id}</strong>
+					<span className="ptlc-audit-item-line">
 						Line: {asset.blockCache.position.start.line + 1}
 					</span>
 				</div>
-				<div className="ptl-audit-item-actions" style={{ display: 'flex', gap: '4px' }}>
+				<div className="ptlc-audit-item-actions" style={{ display: 'flex', gap: '4px' }}>
 					<button
 						onClick={() => {
 							toggleView().catch(ErrorHandler.notice)
 						}}
-						className="ptl-audit-item-view-btn"
+						className="ptlc-audit-item-view-btn"
 					>
 						{showContent ? 'Hide Details' : 'View Details'}
 					</button>
@@ -201,24 +201,24 @@ export function AssetListItem({
 				</div>
 			</div>
 			{showContent && (
-				<div className="ptl-audit-item-content">
+				<div className="ptlc-audit-item-content">
 					<pre>
 						<code>{content}</code>
 					</pre>
 
-					<div className="ptl-audit-item-asset-preview">
-						{assetData?.isLoading && <div className="ptl-audit-loading">Loading asset...</div>}
+					<div className="ptlc-audit-item-asset-preview">
+						{assetData?.isLoading && <div className="ptlc-audit-loading">Loading asset...</div>}
 						{assetData?.error && (
-							<div className="ptl-audit-error">Error loading asset: {assetData.error}</div>
+							<div className="ptlc-audit-error">Error loading asset: {assetData.error}</div>
 						)}
 						{assetData?.url &&
 							(assetData.mimeType?.startsWith('image/') ? (
 								<div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--size-4-1)' }}>
-									<div className="ptl-audit-asset-mime">Type: {assetData.mimeType}</div>
-									<img src={assetData.url} alt="Asset preview" className="ptl-audit-asset-image" />
+									<div className="ptlc-audit-asset-mime">Type: {assetData.mimeType}</div>
+									<img src={assetData.url} alt="Asset preview" className="ptlc-audit-asset-image" />
 								</div>
 							) : (
-								<div className="ptl-audit-asset-mime">Type: {assetData.mimeType || 'unknown'}</div>
+								<div className="ptlc-audit-asset-mime">Type: {assetData.mimeType || 'unknown'}</div>
 							))}
 					</div>
 				</div>

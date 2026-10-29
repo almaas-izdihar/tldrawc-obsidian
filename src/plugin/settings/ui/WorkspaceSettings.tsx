@@ -7,8 +7,8 @@ import { Toggle, Dropdown } from '@obsidian-plugin-toolkit/react/components'
 
 const markdownViewOptions = {
 	markdown: 'Markdown editor',
-	'tldraw-read-only': 'Tldraw read-only',
-	'tldraw-view': 'Tldraw editor',
+	'tldrawc-read-only': 'Tldrawc read-only',
+	'tldrawc-view': 'Tldrawc editor',
 } as const satisfies Record<TldrawPluginSettings['workspace']['tldrMarkdownViewType'], string>
 
 export default function WorkspaceSettings() {
@@ -44,7 +44,7 @@ export default function WorkspaceSettings() {
 							<>
 								When opening a `.md` file that is detected as a tldraw document, switch to the view
 								type below.
-								<code className="ptl-default-code">
+								<code className="ptlc-default-code">
 									DEFAULT: {DEFAULT_SETTINGS.workspace.switchMarkdownView ? 'On' : 'Off'}
 								</code>
 							</>
@@ -65,7 +65,7 @@ export default function WorkspaceSettings() {
 						desc: (
 							<>
 								When opening a `.md` file that is detected as a tldraw document, use this view type.
-								<code className="ptl-default-code">
+								<code className="ptlc-default-code">
 									DEFAULT: {markdownViewOptions[DEFAULT_SETTINGS.workspace.tldrMarkdownViewType]}
 								</code>
 							</>

@@ -23,7 +23,7 @@ import { Dropdown, Text, Toggle, ExtraButton, MomentFormat } from '@obsidian-plu
 import { Setting, Group } from '@obsidian-plugin-toolkit/react/components/setting/group'
 import { ErrorHandler } from 'src/plugin/error-handler'
 
-const DEFAULT_TAGS = ['tldraw']
+const DEFAULT_TAGS = ['tldrawc']
 
 const FileDestinationMethodDesc = memo(function FileDestinationMethodDesc({
 	method,
@@ -59,7 +59,7 @@ const FileDestinationMethodDesc = memo(function FileDestinationMethodDesc({
 		<>
 			The method to use for all new tldraw files.
 			<div>{desc}</div>
-			<code className="ptl-default-code">Destination: {destination}</code>
+			<code className="ptlc-default-code">Destination: {destination}</code>
 		</>
 	)
 })
@@ -221,17 +221,17 @@ function NewFilePrefix({ settingsManager }: { settingsManager: UserSettingsManag
 							{
 								'When creating a new tldraw file, the file name will automatically prepend the prefix. Can be left empty, however if both the prefix and time format are empty, it will use the defaults to name the file.'
 							}
-							<code className="ptl-default-code">
+							<code className="ptlc-default-code">
 								{`DEFAULT: [${DEFAULT_SETTINGS.newFilePrefix} ]`}
 							</code>
-							<div className="ptl-new-file-prefix-template-preview">
+							<div className="ptlc-new-file-prefix-template-preview">
 								<p>
 									Preview (filename):
 									{/* <input type={'checkbox'} checked={ } */}
 									<code>{settingsManager.plugin.createDefaultFilename(previewCreateOptions)}</code>
 								</p>
 								<p>Available template variables:</p>
-								<div className="ptl-new-file-prefix-templates">
+								<div className="ptlc-new-file-prefix-templates">
 									{[
 										{
 											template: '{{ currentFileBasename }}',
@@ -254,15 +254,15 @@ function NewFilePrefix({ settingsManager }: { settingsManager: UserSettingsManag
 											),
 										},
 									].map(({ template, description, children }) => (
-										<div key={template} className="ptl-new-file-prefix-template-item">
-											<div className="ptl-new-file-prefix-template-main">
-												<code className="ptl-new-file-prefix-template-code">{template}</code>
-												<span className="ptl-new-file-prefix-template-description">
+										<div key={template} className="ptlc-new-file-prefix-template-item">
+											<div className="ptlc-new-file-prefix-template-main">
+												<code className="ptlc-new-file-prefix-template-code">{template}</code>
+												<span className="ptlc-new-file-prefix-template-description">
 													{description}
 												</span>
 											</div>
 											{children && (
-												<div className="ptl-new-file-prefix-template-children">{children}</div>
+												<div className="ptlc-new-file-prefix-template-children">{children}</div>
 											)}
 										</div>
 									))}
@@ -415,7 +415,7 @@ function FrontmatterSettingsGroup() {
 		(tag: string) => {
 			const tags = settings.file?.customTags
 			return (
-				<div key={tag} className="ptl-settings-frontmatter-tag multi-select-pill">
+				<div key={tag} className="ptlc-settings-frontmatter-tag multi-select-pill">
 					<div className="multi-select-pill-content">
 						<span>{tag}</span>
 					</div>
@@ -445,7 +445,7 @@ function FrontmatterSettingsGroup() {
 						<>
 							An alternative key to use to determine if a markdown file is a tldraw document. This
 							key will be added to every new tldraw markdown file.
-							<code className="ptl-default-code">{`DEFAULT: ${FRONTMATTER_KEY}`}</code>
+							<code className="ptlc-default-code">{`DEFAULT: ${FRONTMATTER_KEY}`}</code>
 						</>
 					),
 					control: (
@@ -466,7 +466,7 @@ function FrontmatterSettingsGroup() {
 					desc: (
 						<>
 							Insert tags into new tldraw markdown documents.
-							<code className="ptl-default-code">
+							<code className="ptlc-default-code">
 								DEFAULT: {DEFAULT_SETTINGS.workspace.switchMarkdownView ? 'On' : 'Off'}
 							</code>
 						</>
@@ -490,9 +490,9 @@ function FrontmatterSettingsGroup() {
 								The tags to insert in new tldraw markdown documents. See{' '}
 								<a href="https://help.obsidian.md/tags#Tag+format">Tags documentation</a> for what
 								is considered a valid tag.
-								<code className="ptl-default-code">{`DEFAULT: ${DEFAULT_TAGS.join(', ')}`}</code>
+								<code className="ptlc-default-code">{`DEFAULT: ${DEFAULT_TAGS.join(', ')}`}</code>
 							</p>
-							<div className="ptl-settings-frontmatter-taglist">
+							<div className="ptlc-settings-frontmatter-taglist">
 								{settings.file?.customTags?.map(makeFrontmatterTag) ?? (
 									<>{DEFAULT_TAGS.map(makeFrontmatterTag)}</>
 								)}
@@ -584,7 +584,7 @@ function SaveDelaySettings() {
 				desc: (
 					<>
 						{`The delay in seconds to automatically save after a change has been made to a tlraw drawing. Must be a value between ${minDelay} and ${maxDelay} (1 hour). Requires reloading any tldraw files you may have open in a tab.`}
-						<code className="ptl-default-code">
+						<code className="ptlc-default-code">
 							{`DEFAULT: [${DEFAULT_SETTINGS.saveFileDelay}]`}
 						</code>
 					</>

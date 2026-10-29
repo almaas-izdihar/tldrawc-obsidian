@@ -305,14 +305,14 @@ export class FileSearchModal extends SuggestModal<Suggestion> {
 	}
 
 	renderSuggestion(suggestion: Suggestion, el: HTMLElement) {
-		const div = el.createDiv({ cls: 'ptl-suggestion-item' })
-		setIcon(div.createSpan({ cls: 'ptl-suggestion-item-icon' }), suggestion.icon)
+		const div = el.createDiv({ cls: 'ptlc-suggestion-item' })
+		setIcon(div.createSpan({ cls: 'ptlc-suggestion-item-icon' }), suggestion.icon)
 		div.createSpan({
-			cls: 'ptl-file-search-title',
+			cls: 'ptlc-file-search-title',
 			text: suggestion.title,
 		})
 		if (suggestion.label) {
-			el.createDiv({ cls: 'ptl-suggestion-label', text: suggestion.label })
+			el.createDiv({ cls: 'ptlc-suggestion-label', text: suggestion.label })
 		}
 	}
 

@@ -21,11 +21,11 @@ import {
 } from 'src/plugin/document/document'
 import { migrateTldrawFileDataIfNecessary } from 'src/plugin/document/migrate/tl-data-to-tlstore'
 import { parseTLDataDocument } from 'src/plugin/document/parse'
+import { TLDRAWC_FILE_EXTENSION } from 'src/plugin/document/constants'
 import { safeSecondsToMs } from 'src/utils/numbers'
 import {
 	loadSnapshot,
 	TLAsset,
-	TLDRAW_FILE_EXTENSION,
 	TLImageAsset,
 	TLImageShape,
 	TLStore,
@@ -151,7 +151,7 @@ export default class TLDataDocumentStoreManager {
 
 		const format = this.plugin.isTldrawFile(tFile)
 			? formats.markdown
-			: tFile.path.endsWith(TLDRAW_FILE_EXTENSION)
+			: tFile.path.endsWith(TLDRAWC_FILE_EXTENSION)
 				? formats.tldr
 				: (() => {
 						throw new Error()

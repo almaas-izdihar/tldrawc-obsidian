@@ -1,7 +1,7 @@
 import { Editor, EditorPosition, Notice, TFile } from 'obsidian'
 import TldrawPlugin from 'src/plugin/TldrawPlugin'
 import { TldrawDocument } from 'src/plugin/audit/document'
-import { FILE_EXTENSION } from 'src/plugin/document/constants'
+import { FILE_EXTENSION, TLDRAWC_FILE_EXTENSION } from 'src/plugin/document/constants'
 import {
 	PANE_TARGETS,
 	PaneTarget,
@@ -9,7 +9,6 @@ import {
 	VIEW_TYPE_TLDRAW,
 } from 'src/plugin/constants'
 import { importTldrawFile } from 'src/plugin/actions/file'
-import { TLDRAW_FILE_EXTENSION } from 'tldraw'
 import { ErrorHandler } from 'src/plugin/error-handler'
 
 async function createTldrawFile(
@@ -60,14 +59,14 @@ type CreateOptions = {
 function createCommandId(inMarkdown: boolean, pane?: PaneTarget) {
 	return (
 		`new-tldraw-file-` +
-		(inMarkdown ? FILE_EXTENSION : TLDRAW_FILE_EXTENSION) +
+		(inMarkdown ? FILE_EXTENSION : TLDRAWC_FILE_EXTENSION) +
 		(!pane ? '' : `-${pane}`)
 	)
 }
 
 function addCreateNewDrawingCommand(plugin: TldrawPlugin, options: CreateOptions) {
 	const { inMarkdown, pane } = options
-	const extension = inMarkdown ? FILE_EXTENSION : TLDRAW_FILE_EXTENSION
+	const extension = inMarkdown ? FILE_EXTENSION : TLDRAWC_FILE_EXTENSION
 	plugin.addCommand({
 		id: createCommandId(inMarkdown, pane),
 		name:
@@ -83,7 +82,7 @@ function addCreateNewDrawingCommand(plugin: TldrawPlugin, options: CreateOptions
 
 function addCreateNewDrawingAndEmbedCommand(plugin: TldrawPlugin, options: CreateOptions) {
 	const { inMarkdown, pane } = options
-	const extension = inMarkdown ? FILE_EXTENSION : TLDRAW_FILE_EXTENSION
+	const extension = inMarkdown ? FILE_EXTENSION : TLDRAWC_FILE_EXTENSION
 	plugin.addCommand({
 		id: `embed-${createCommandId(inMarkdown, pane)}`,
 		name:

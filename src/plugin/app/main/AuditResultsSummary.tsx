@@ -18,15 +18,15 @@ export function AuditResultsSummary({ onNavigateToScanner }: { onNavigateToScann
 				},
 				main: {
 					children: (
-						<div className="ptl-audit-summary-screen">
+						<div className="ptlc-audit-summary-screen">
 							{isAuditingAll ? (
-								<div className="ptl-audit-status-container">
-									<div className="ptl-audit-status-content">
+								<div className="ptlc-audit-status-container">
+									<div className="ptlc-audit-status-content">
 										<p>Auditing all files... Please wait.</p>
-										<div className="ptl-audit-progress-wrapper">
-											<div className="ptl-audit-progress-bar">
+										<div className="ptlc-audit-progress-wrapper">
+											<div className="ptlc-audit-progress-bar">
 												<div
-													className="ptl-audit-progress-fill"
+													className="ptlc-audit-progress-fill"
 													style={{
 														width: (() => {
 															const [curr, total] = progress.split(' / ').map(Number)
@@ -35,14 +35,14 @@ export function AuditResultsSummary({ onNavigateToScanner }: { onNavigateToScann
 													}}
 												/>
 											</div>
-											<span className="ptl-audit-progress-text">{progress}</span>
+											<span className="ptlc-audit-progress-text">{progress}</span>
 										</div>
 									</div>
 								</div>
 							) : resultsWithLooseEntries.length > 0 ? (
-								<div className="ptl-audit-report">
+								<div className="ptlc-audit-report">
 									<h4>{resultsWithLooseEntries.length} files found with loose entries</h4>
-									<ul className="ptl-audit-list">
+									<ul className="ptlc-audit-list">
 										{resultsWithLooseEntries.map((res) => (
 											<SummaryReportItem
 												key={res.document.path}
@@ -56,7 +56,7 @@ export function AuditResultsSummary({ onNavigateToScanner }: { onNavigateToScann
 									</ul>
 								</div>
 							) : (
-								<div className="ptl-audit-empty">
+								<div className="ptlc-audit-empty">
 									<p>No loose entries found or audit not yet run.</p>
 								</div>
 							)}
@@ -91,12 +91,12 @@ function SummaryReportItem({
 	}
 
 	return (
-		<li className="ptl-audit-report-item">
-			<div className="ptl-audit-report-item-info">
-				<span className="ptl-audit-report-item-path">{result.document.path}</span>
-				<span className="ptl-audit-report-item-count">{result.count} items</span>
+		<li className="ptlc-audit-report-item">
+			<div className="ptlc-audit-report-item-info">
+				<span className="ptlc-audit-report-item-path">{result.document.path}</span>
+				<span className="ptlc-audit-report-item-count">{result.count} items</span>
 			</div>
-			<div className="ptl-audit-report-item-actions">
+			<div className="ptlc-audit-report-item-actions">
 				<button
 					className="mod-warning"
 					onClick={(e) => void handlePruneAll(e)}

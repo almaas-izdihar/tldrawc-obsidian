@@ -65,7 +65,7 @@ export abstract class BaseTldrawFileView<View extends FileView = FileView> {
 	protected abstract onUpdated(update: DataUpdate): void
 
 	onload(): void {
-		this.fileView.contentEl.addClass('tldraw-view-content')
+		this.fileView.contentEl.addClass('tldrawc-view-content')
 
 		this.#unregisterOnWindowMigrated?.()
 		this.#unregisterOnWindowMigrated = this.fileView.contentEl.onWindowMigrated(() => {
@@ -82,7 +82,7 @@ export abstract class BaseTldrawFileView<View extends FileView = FileView> {
 
 	onunload(): void {
 		this.#unregisterOnWindowMigrated?.()
-		this.fileView.contentEl.removeClass('tldraw-view-content')
+		this.fileView.contentEl.removeClass('tldrawc-view-content')
 		this.unmountReactRoot()
 	}
 

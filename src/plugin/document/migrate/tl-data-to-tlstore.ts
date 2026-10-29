@@ -1,5 +1,5 @@
 import {
-	createTLSchema,
+	createTLSchemaFromUtils,
 	JsonObject,
 	parseTldrawJsonFile,
 	TldrawFile,
@@ -7,6 +7,7 @@ import {
 	UnknownRecord,
 } from 'tldraw'
 import { TLData } from '../document'
+import { pluginShapeUtils } from 'src/tldraw/math'
 
 /**
  * Tldraw handles the migration here.
@@ -15,7 +16,7 @@ import { TLData } from '../document'
  */
 export function migrateTldrawFileDataIfNecessary(tldrawFileData: string | TldrawFile): TLStore {
 	const res = parseTldrawJsonFile({
-		schema: createTLSchema(),
+		schema: createTLSchemaFromUtils({ shapeUtils: pluginShapeUtils }),
 		json: typeof tldrawFileData === 'string' ? tldrawFileData : JSON.stringify(tldrawFileData),
 	})
 

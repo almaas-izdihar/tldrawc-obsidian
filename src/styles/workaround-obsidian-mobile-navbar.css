@@ -2,10 +2,10 @@
 Workaround for Obsidian mobile navbar obscuring toolbar
 */
 
-.is-mobile div[data-type=tldraw-view] .tldraw-view-content .tlui-layout__bottom {
+.is-mobile div[data-type=tldraw-view] .tldrawc-view-content .tlui-layout__bottom {
   margin-bottom: calc(var(--navbar-height) + var(--safe-area-inset-bottom));
 }
 
-.is-mobile.is-tablet div[data-type=tldraw-view] .tldraw-view-content .tlui-layout__bottom {
+.is-mobile.is-tablet div[data-type=tldraw-view] .tldrawc-view-content .tlui-layout__bottom {
   margin-bottom: 0;
 }

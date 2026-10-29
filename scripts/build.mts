@@ -46,6 +46,10 @@ const context = await createEsbuildObsidianContext({
 		treeShaking: true,
 		loader: {
 			'.js': 'jsx',
+			// KaTeX fonts are inlined, since a plugin can only ship main.js, manifest.json and styles.css.
+			'.woff2': 'dataurl',
+			'.woff': 'dataurl',
+			'.ttf': 'dataurl',
 		},
 		outdir,
 		define: {

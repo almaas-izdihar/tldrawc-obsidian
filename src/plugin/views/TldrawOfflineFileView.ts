@@ -47,11 +47,11 @@ export class TldrawOfflineFileView extends FileView {
 		if (!this.file) return
 
 		menu
-			.addItem((item) => pluginMenuLabel(item.setSection('tldraw')))
+			.addItem((item) => pluginMenuLabel(item.setSection('tldrawc')))
 			.addItem((item) =>
 				item
 					.setIcon('external-link')
-					.setSection('tldraw')
+					.setSection('tldrawc')
 					.setTitle(OPEN_IN_DEFAULT_APP)
 					.onClick(() => this.openInDefaultApp())
 			)
@@ -59,7 +59,7 @@ export class TldrawOfflineFileView extends FileView {
 
 	override async onOpen() {
 		this.contentEl.empty()
-		const container = this.contentEl.createDiv({ cls: 'ptl-offline-unsupported' })
+		const container = this.contentEl.createDiv({ cls: 'ptlc-offline-unsupported' })
 		container.createEl('h3', { text: TLDRAW_OFFLINE_UNSUPPORTED_TITLE })
 		appendTldrawOfflineMessage(container)
 	}

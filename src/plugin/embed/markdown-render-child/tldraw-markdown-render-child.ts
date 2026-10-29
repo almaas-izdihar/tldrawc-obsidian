@@ -244,8 +244,8 @@ export class TldrawMarkdownRenderChild extends MarkdownRenderChild {
 		if (!viewContentRect) return
 		const { width, height } = viewContentRect
 		if (!width || !height) return
-		container.style.setProperty('--ptl-placeholder-width', `${width}px`)
-		container.style.setProperty('--ptl-placeholder-height', `${height}px`)
+		container.style.setProperty('--ptlc-placeholder-width', `${width}px`)
+		container.style.setProperty('--ptlc-placeholder-height', `${height}px`)
 	}
 
 	#createViewContentEl() {
@@ -427,10 +427,10 @@ export class TldrawMarkdownRenderChild extends MarkdownRenderChild {
 		return (
 			this.#viewContentEl !== undefined &&
 			// The image preview
-			(this.#viewContentEl.querySelector('.ptl-tldraw-image > div.tl-container > img[src]') !==
+			(this.#viewContentEl.querySelector('.ptlc-tldraw-image > div.tl-container > img[src]') !==
 				null ||
 				// The interactive mode canvas
-				this.#viewContentEl.querySelector('.tldraw-view-root > div.tl-container') !== null)
+				this.#viewContentEl.querySelector('.tldrawc-view-root > div.tl-container') !== null)
 		)
 	}
 
@@ -607,17 +607,17 @@ function createTldrawEmbedView(
 		getCurrentDeepLink: () => TLDeepLink | undefined
 	}
 ) {
-	const tldrawEmbedView = internalEmbedDiv.createDiv({ cls: 'ptl-markdown-embed' })
+	const tldrawEmbedView = internalEmbedDiv.createDiv({ cls: 'ptlc-markdown-embed' })
 
 	const tldrawEmbedViewContent = tldrawEmbedView.createDiv({
-		cls: 'ptl-view-content',
+		cls: 'ptlc-view-content',
 		attr: {
 			'data-showBgDots': showBgDots,
 		},
 	})
 
 	const resizeHandle = tldrawEmbedView.createDiv({
-		cls: 'ptl-embed-resize-handle',
+		cls: 'ptlc-embed-resize-handle',
 	})
 
 	// Prevent the Obsidian editor from selecting the embed link with the editing cursor when a user interacts with the view.
@@ -650,7 +650,7 @@ function createTldrawEmbedView(
 
 	tldrawEmbedViewContent.addEventListener('dblclick', (ev) => {
 		if (controller.getViewMode() === 'image') {
-			openTldrawFile('new-tab', 'tldraw-view')
+			openTldrawFile('new-tab', 'tldrawc-view')
 			ev.stopPropagation()
 		}
 	})

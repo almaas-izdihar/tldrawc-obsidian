@@ -1,8 +1,8 @@
 import { moment, normalizePath, OpenViewState, TFile, WorkspaceLeaf } from 'obsidian'
-import { TLDRAW_FILE_EXTENSION, TLStore } from 'tldraw'
+import { TLStore } from 'tldraw'
 import { checkAndCreateFolder, getNewUniqueFilepath } from 'src/obsidian/helpers/vault-paths'
 import { PaneTarget, VIEW_TYPE_TLDRAW, ViewType } from 'src/plugin/constants'
-import { FILE_EXTENSION, FRONTMATTER_KEY } from 'src/plugin/document/constants'
+import { FILE_EXTENSION, FRONTMATTER_KEY, TLDRAWC_FILE_EXTENSION } from 'src/plugin/document/constants'
 import {
 	codeBlockTemplate,
 	frontmatterTemplate,
@@ -47,7 +47,7 @@ export default class TldrawFileCreator {
 			tlStore,
 		}: { foldername: string; inMarkdown: boolean; tlStore?: TLStore }
 	) => {
-		const extension = inMarkdown ? FILE_EXTENSION : TLDRAW_FILE_EXTENSION
+		const extension = inMarkdown ? FILE_EXTENSION : TLDRAWC_FILE_EXTENSION
 		// adds the extension if the filename does not already include it:
 		filename = filename.endsWith(extension) ? filename : filename + extension
 

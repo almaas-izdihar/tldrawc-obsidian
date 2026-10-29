@@ -20,8 +20,8 @@ export default class ViewModeManager {
 	constructor(private readonly plugin: TldrawPlugin) {}
 
 	setStatusBarViewModeVisibility(visible: boolean) {
-		if (visible) this.plugin.statusBarRoot?.removeClass('ptl-hide-statusbar-viewmode')
-		else this.plugin.statusBarRoot?.addClass('ptl-hide-statusbar-viewmode')
+		if (visible) this.plugin.statusBarRoot?.removeClass('ptlc-hide-statusbar-viewmode')
+		else this.plugin.statusBarRoot?.addClass('ptlc-hide-statusbar-viewmode')
 	}
 
 	updateStatusBarViewMode(view: ViewType) {

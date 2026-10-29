@@ -30,8 +30,8 @@ describe('getNewUniqueFilepath', () => {
 describe('isValidViewType', () => {
 	it('accepts the known view types', () => {
 		expect(isValidViewType('markdown')).toBe(true)
-		expect(isValidViewType('tldraw-view')).toBe(true)
-		expect(isValidViewType('tldraw-read-only')).toBe(true)
+		expect(isValidViewType('tldrawc-view')).toBe(true)
+		expect(isValidViewType('tldrawc-read-only')).toBe(true)
 	})
 
 	it('rejects unknown strings', () => {

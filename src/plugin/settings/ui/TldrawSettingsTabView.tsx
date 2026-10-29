@@ -65,12 +65,12 @@ export default function TldrawSettingsTabView({
 	const [isOpen, setIsOpen] = useState(false)
 	return (
 		<>
-			<div className="ptl-settings-tab-header" style={{ marginBottom: '8px' }}>
-				<div className="ptl-settings-tab-container">
+			<div className="ptlc-settings-tab-header" style={{ marginBottom: '8px' }}>
+				<div className="ptlc-settings-tab-container">
 					{tabs.map(([key, tab]) => (
 						<div
 							key={key}
-							className="ptl-settings-tab-item"
+							className="ptlc-settings-tab-item"
 							data-is-active={key === activeTabKey}
 							onClick={() => setActiveTabKey(key)}
 						>
@@ -79,12 +79,12 @@ export default function TldrawSettingsTabView({
 					))}
 				</div>
 			</div>
-			<Container key={activeTabKey} className="ptl-setting-tab-content">
+			<Container key={activeTabKey} className="ptlc-setting-tab-content">
 				<SettingsManagerContext value={settingsManager}>
 					<activeTab.Component />
 				</SettingsManagerContext>
 			</Container>
-			<Container className="ptl-settings-footer" style={{ marginTop: '16px' }}>
+			<Container className="ptlc-settings-footer" style={{ marginTop: '16px' }}>
 				<Group heading="Plugin information">
 					<Setting
 						slots={{
