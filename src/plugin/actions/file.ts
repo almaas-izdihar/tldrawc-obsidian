@@ -3,11 +3,14 @@ import TldrawPlugin from 'src/plugin/TldrawPlugin'
 import { showSaveFileModal } from 'src/plugin/modals/save-file-modal'
 import {
 	Editor,
-	TLDRAW_FILE_EXTENSION,
 	TLUiActionItem,
 	serializeTldrawJsonBlob,
 } from 'tldraw'
-import { TLDRAW_OFFLINE_FILE_EXTENSION, TLDRAW_OFFLINE_UNSUPPORTED_TITLE } from 'src/plugin/document/constants'
+import {
+	TLDRAW_OFFLINE_FILE_EXTENSION,
+	TLDRAW_OFFLINE_UNSUPPORTED_TITLE,
+	TLDRAWC_FILE_EXTENSION,
+} from 'src/plugin/document/constants'
 import { migrateTldrawFileDataIfNecessary } from 'src/plugin/document/migrate/tl-data-to-tlstore'
 import { appendTldrawOfflineMessage } from 'src/utils/tldraw-offline-message'
 // import { shouldOverrideDocument } from "src/components/file-menu/shouldOverrideDocument";
@@ -52,7 +55,7 @@ export function getSaveFileCopyAction(editor: Editor, defaultDocumentName: strin
 		label: 'action.save-copy',
 		readonlyOk: true,
 		async onSelect() {
-			const defaultName = `${defaultDocumentName}${TLDRAW_FILE_EXTENSION}`
+			const defaultName = `${defaultDocumentName}${TLDRAWC_FILE_EXTENSION}`
 
 			const blobToSave = await serializeTldrawJsonBlob(editor)
 
@@ -74,7 +77,7 @@ export function getSaveFileCopyInVaultAction(
 	defaultDocumentName: string,
 	plugin: TldrawPlugin
 ): TLUiActionItem {
-	const defaultName = `${defaultDocumentName}${TLDRAW_FILE_EXTENSION}`
+	const defaultName = `${defaultDocumentName}${TLDRAWC_FILE_EXTENSION}`
 	return {
 		id: SAVE_FILE_COPY_IN_VAULT_ACTION,
 		label: 'Save a copy in vault',
@@ -121,7 +124,7 @@ export async function importTldrawFile(
 					accept: {
 						// tldraw offline files are selectable so that we can explain why we can't import
 						// them yet. Leaving them out would just grey them out with no explanation.
-						'text/tldr': ['.tldr', TLDRAW_OFFLINE_FILE_EXTENSION],
+						'text/tldr': ['.tldr', TLDRAWC_FILE_EXTENSION, TLDRAW_OFFLINE_FILE_EXTENSION],
 					},
 				},
 			],

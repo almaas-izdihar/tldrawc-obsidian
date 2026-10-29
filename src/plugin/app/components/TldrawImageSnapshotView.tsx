@@ -47,7 +47,7 @@ function PluginTldrawImage({
 	}
 }) {
 	return (
-		<div className="ptl-tldraw-image" {...{ ...props }}>
+		<div className="ptlc-tldraw-image" {...{ ...props }}>
 			<TldrawImageContext.Consumer>
 				{(value) => (!value ? <></> : <TldrawImage snapshot={snapshot} {...value.props} />)}
 			</TldrawImageContext.Consumer>
@@ -74,7 +74,7 @@ function PluginTldrawImageContainer({
 		imagePlaceHolderStore.getPlaceHolder
 	)
 	return (
-		<div className="ptl-tldraw-image-container" {...{ ...props }}>
+		<div className="ptlc-tldraw-image-container" {...{ ...props }}>
 			<PluginTldrawImageContext.Consumer>
 				{(value) =>
 					!placeHolder ? (
@@ -85,7 +85,7 @@ function PluginTldrawImageContainer({
 						)
 					) : (
 						<div
-							className="ptl-tldraw-image ptl-tldraw-image-placeholder"
+							className="ptlc-tldraw-image ptlc-tldraw-image-placeholder"
 							{...value?.props}
 							ref={(ref) => {
 								ref?.appendChild(placeHolder)

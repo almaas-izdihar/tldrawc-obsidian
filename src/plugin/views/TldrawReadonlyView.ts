@@ -10,7 +10,7 @@ import {
 } from 'src/plugin/constants'
 import { TLDataDocumentStore } from 'src/plugin/document/document'
 import { migrateTldrawFileDataIfNecessary } from 'src/plugin/document/migrate/tl-data-to-tlstore'
-import { TLDRAW_FILE_EXTENSION } from 'tldraw'
+import { TLDRAWC_FILE_EXTENSION } from 'src/plugin/document/constants'
 import { BaseTldrawFileView } from './BaseTldrawFileView'
 import { pluginMenuLabel } from 'src/plugin/menu'
 import { ErrorHandler } from 'src/plugin/error-handler'
@@ -46,7 +46,7 @@ export class TldrawReadonlyView extends BaseTldrawFileView {
 
 	override viewAsMarkdownClicked(): void {
 		const { file } = this.fileView
-		if (file !== null && file.path.endsWith(TLDRAW_FILE_EXTENSION)) {
+		if (file !== null && file.path.endsWith(TLDRAWC_FILE_EXTENSION)) {
 			this.createAndOpen(file, 'new-tab', 'markdown').catch(ErrorHandler.notice)
 			return
 		} else {
@@ -100,11 +100,11 @@ export class ReadonlyTldrawView extends FileView {
 		if (!file) return
 
 		menu
-			.addItem((item) => pluginMenuLabel(item.setSection('tldraw')))
+			.addItem((item) => pluginMenuLabel(item.setSection('tldrawc')))
 			.addItem((item) =>
 				item
 					.setIcon('external-link')
-					.setSection('tldraw')
+					.setSection('tldrawc')
 					.setTitle('Open in default app')
 					.onClick(() => this.app.openWithDefaultApp(file.path))
 			)

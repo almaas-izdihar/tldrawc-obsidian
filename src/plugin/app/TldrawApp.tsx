@@ -423,7 +423,7 @@ const TldrawApp = ({
 
 	return (
 		<div
-			className={`tldraw-view-root ${plugin.settingsManager.settings.themeMode === 'match-theme' ? 'tl-obsidian-theme' : ''}`}
+			className={`tldrawc-view-root ${plugin.settingsManager.settings.themeMode === 'match-theme' ? 'tl-obsidian-theme' : ''}`}
 			// e.stopPropagation(); this line should solve the mobile swipe menus bug
 			// The bug only happens on the mobile version of Obsidian.
 			// When a user tries to interact with the tldraw canvas,

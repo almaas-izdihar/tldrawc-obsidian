@@ -31,13 +31,13 @@ export default function AuditSessionRunner() {
 
 	return (
 		<ModalWrapper
-			className="ptl-audit-modal"
+			className="ptlc-audit-modal"
 			modalProps={plugin}
 			open={state.isOpen}
 			onClose={() => manager.closeModal()}
 		>
-			<div className="ptl-audit-modal-inner">
-				<div className="ptl-audit-screen-container">{renderScreen()}</div>
+			<div className="ptlc-audit-modal-inner">
+				<div className="ptlc-audit-screen-container">{renderScreen()}</div>
 				<AuditNavbar activeScreen={activeScreen} onScreenChange={setActiveScreen} />
 			</div>
 		</ModalWrapper>
@@ -52,15 +52,15 @@ function AuditNavbar({
 	onScreenChange: (screen: AuditScreen) => void
 }) {
 	return (
-		<nav className="ptl-audit-navbar">
+		<nav className="ptlc-audit-navbar">
 			<button
-				className={`ptl-audit-nav-item ${activeScreen === 'scanner' ? 'is-active' : ''}`}
+				className={`ptlc-audit-nav-item ${activeScreen === 'scanner' ? 'is-active' : ''}`}
 				onClick={() => onScreenChange('scanner')}
 			>
 				Scanner
 			</button>
 			<button
-				className={`ptl-audit-nav-item ${activeScreen === 'results' ? 'is-active' : ''}`}
+				className={`ptlc-audit-nav-item ${activeScreen === 'results' ? 'is-active' : ''}`}
 				onClick={() => onScreenChange('results')}
 			>
 				Summary Report

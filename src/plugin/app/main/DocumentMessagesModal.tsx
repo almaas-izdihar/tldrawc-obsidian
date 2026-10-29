@@ -22,13 +22,13 @@ export function DocumentMessagesModal({
 
 	return (
 		<Modal modalProps={plugin} open={open} onClose={onClose}>
-			<div className="ptl-document-messages-modal">
+			<div className="ptlc-document-messages-modal">
 				{allMessages.length === 0 ? (
 					<p>No messages.</p>
 				) : (
 					<>
 						<header>{`Document Messages (${allMessages.length})`}</header>
-						<div className="ptl-document-messages-list">
+						<div className="ptlc-document-messages-list">
 							{allMessages.map((message, index) => (
 								<DocumentMessageItem
 									key={getMessageKey(message, index)}
@@ -38,7 +38,7 @@ export function DocumentMessagesModal({
 							))}
 						</div>
 						{allMessages.length > 1 && (
-							<div className="ptl-document-messages-actions">
+							<div className="ptlc-document-messages-actions">
 								<button
 									className="mod-cta"
 									onClick={() => {
@@ -78,8 +78,8 @@ function DocumentMessageItem({
 			return <BlockRefErrorMessageItem message={message} messages={messages} />
 		default:
 			return (
-				<div className="ptl-document-message-item">
-					<p className="ptl-document-message-text">{`Unknown message type: ${String((message as { type: unknown }).type)}`}</p>
+				<div className="ptlc-document-message-item">
+					<p className="ptlc-document-message-text">{`Unknown message type: ${String((message as { type: unknown }).type)}`}</p>
 					<ButtonComponent text="Dismiss" onClick={() => message.dismiss()} />
 				</div>
 			)
@@ -103,8 +103,8 @@ function BlockRefErrorMessageItem({
 	].filter((e) => e !== undefined)
 
 	return (
-		<div className="ptl-document-message-item" data-with-error={message.type}>
-			{state.blockId && <div className="ptl-message-detail">Block ID: {state.blockId}</div>}
+		<div className="ptlc-document-message-item" data-with-error={message.type}>
+			{state.blockId && <div className="ptlc-message-detail">Block ID: {state.blockId}</div>}
 			{errors.length === 0 ? (
 				<>Hmm... 🤔 we overlooked something.</>
 			) : (
@@ -113,7 +113,7 @@ function BlockRefErrorMessageItem({
 						switch (e.type) {
 							case 'asset':
 								return (
-									<div className="ptl-document-message-details" data-message-type={e.asset.message}>
+									<div className="ptlc-document-message-details" data-message-type={e.asset.message}>
 										<BlockRefErrorTypeMessage
 											asset={e.asset}
 											tFile={tFile}
@@ -125,7 +125,7 @@ function BlockRefErrorMessageItem({
 						}
 					})()
 					return (
-						<div className="ptl-document-message-item-error" data-error-type={e.type} key={e.type}>
+						<div className="ptlc-document-message-item-error" data-error-type={e.type} key={e.type}>
 							{content}
 						</div>
 					)
@@ -168,7 +168,7 @@ function BlockRefErrorTypeMessage({
 	}
 
 	return (
-		<div className="ptl-message-type-specific">
+		<div className="ptlc-message-type-specific">
 			{typeSpecificMessage}
 			{asset.item && (
 				<ButtonComponent

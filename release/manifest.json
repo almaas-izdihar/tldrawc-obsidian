@@ -1,9 +1,9 @@
 {
-	"id": "tldraw",
-	"name": "tldraw",
+	"id": "tldrawc",
+	"name": "tldrawc",
 	"version": "1.35.0",
 	"minAppVersion": "1.10.0",
-	"description": "Create whiteboards, diagrams, and drawings with the official tldraw plugin.",
+	"description": "Custom fork of the tldraw plugin with equation (LaTeX) support. Runs side by side with the official tldraw plugin.",
 	"author": "tldraw, Jonathan Mendez, Sam Alhaqab",
 	"authorUrl": "https://github.com/tldraw/obsidian-plugin",
 	"fundingUrl": "https://github.com/sponsors/jon-dez",

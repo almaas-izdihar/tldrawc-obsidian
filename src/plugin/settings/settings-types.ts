@@ -165,9 +165,9 @@ export const DEFAULT_SETTINGS = {
 	focusMode: false,
 	fileDestinations: {
 		confirmDestination: true,
-		assetsFolder: 'tldraw/assets',
+		assetsFolder: 'tldrawc/assets',
 		destinationMethod: 'colocate',
-		defaultFolder: 'tldraw',
+		defaultFolder: 'tldrawc',
 		colocationSubfolder: '',
 	},
 	embeds: {

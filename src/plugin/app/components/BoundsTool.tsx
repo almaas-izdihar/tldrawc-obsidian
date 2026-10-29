@@ -94,7 +94,7 @@ export default function BoundsTool() {
 				<></>
 			) : (
 				<div
-					className="ptl-embed-bounds-selection"
+					className="ptlc-embed-bounds-selection"
 					style={{
 						pointerEvents: 'none',
 						transform: `translate(${currentBounds.x}px, ${currentBounds.y}px)`,
@@ -108,7 +108,7 @@ export default function BoundsTool() {
 				<></>
 			) : (
 				<div
-					className="ptl-embed-bounds-selection"
+					className="ptlc-embed-bounds-selection"
 					style={{
 						transform: `translate(${boundsBox.x}px, ${boundsBox.y}px)`,
 						width: boundsBox.w,
@@ -136,7 +136,7 @@ export default function BoundsTool() {
 				<></>
 			) : (
 				<div
-					className="ptl-embed-bounds-selection"
+					className="ptlc-embed-bounds-selection"
 					style={{
 						transform: `translate(${shapesBox.x}px, ${shapesBox.y}px)`,
 						width: shapesBox.w,

@@ -1,5 +1,5 @@
 export abstract class PTLEditorBlockBlur {
-	static readonly attributeName = 'data-ptl-editor-block-blur'
+	static readonly attributeName = 'data-ptlc-editor-block-blur'
 	static readonly shouldBlockBlurSelector = `[${this.attributeName}=true]` as const
 
 	/**

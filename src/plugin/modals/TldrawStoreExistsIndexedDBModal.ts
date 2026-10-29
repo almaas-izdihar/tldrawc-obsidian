@@ -66,20 +66,20 @@ export default class TldrawStoreExistsIndexedDBModal extends Modal {
 			rej(new TldrawStoreConflictResolveFileUnloaded())
 		})
 
-		this.modalEl.addClass('ptl-compare-modal')
+		this.modalEl.addClass('ptlc-compare-modal')
 
 		this.setTitle(`Conflict resolver - ${tFile.path}`)
 
-		this.contentEl.addClass('ptl-compare-modal-content')
+		this.contentEl.addClass('ptlc-compare-modal-content')
 
 		this.contentEl.createEl('p', {
-			cls: 'ptl-conflict-reason',
+			cls: 'ptlc-conflict-reason',
 			text: "Why are you seeing this? Previous versions of this plugin stored the tldraw document in the Markdown file and in Obsidian's IndexedDB. We no longer store drawings in the IndexedDB, so here are a few options:",
 		})
 
 		this.contentEl.createDiv(
 			{
-				cls: 'ptl-conflict-options',
+				cls: 'ptlc-conflict-options',
 			},
 			(div) => {
 				new Setting(div)
@@ -131,29 +131,29 @@ export default class TldrawStoreExistsIndexedDBModal extends Modal {
 			}
 		)
 
-		const conflictBodyEl = this.contentEl.createDiv({ cls: 'ptl-conflict-body' })
+		const conflictBodyEl = this.contentEl.createDiv({ cls: 'ptlc-conflict-body' })
 
 		const compareEl = conflictBodyEl.createDiv({
-			cls: 'ptl-compare-tldraw-container',
+			cls: 'ptlc-compare-tldraw-container',
 		})
 
 		compareEl.createDiv(
 			{
-				cls: 'ptl-compare-tldraw',
+				cls: 'ptlc-compare-tldraw',
 			},
 			(div) => {
 				div.createEl('b', { text: `Markdown file store` })
 				new TextComponent(div).setValue(tFile.path).inputEl.readOnly = true
 
 				this.markdownStorePreview = div.createDiv({
-					cls: 'ptl-compare-preview',
+					cls: 'ptlc-compare-preview',
 				})
 			}
 		)
 
 		compareEl.createDiv(
 			{
-				cls: 'ptl-compare-tldraw',
+				cls: 'ptlc-compare-tldraw',
 			},
 			(div) => {
 				div.createEl('b', { text: `IndexedDB store` })
@@ -162,7 +162,7 @@ export default class TldrawStoreExistsIndexedDBModal extends Modal {
 				).inputEl.readOnly = true
 
 				this.indexedDBStorePreview = div.createDiv({
-					cls: 'ptl-compare-preview',
+					cls: 'ptlc-compare-preview',
 				})
 			}
 		)

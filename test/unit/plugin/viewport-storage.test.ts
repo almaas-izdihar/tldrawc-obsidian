@@ -28,7 +28,7 @@ describe('viewport-storage', () => {
 	it('uses the documented storage key format', () => {
 		const { app, storage } = createApp()
 		saveViewport(app, 'a.md', 'deep')
-		expect(storage.get('tldraw-viewport:a.md')).toBe('deep')
+		expect(storage.get('tldrawc-viewport:a.md')).toBe('deep')
 	})
 
 	it('isolates entries between files and between apps', () => {

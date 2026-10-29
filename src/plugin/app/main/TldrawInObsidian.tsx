@@ -7,7 +7,7 @@ import DocumentMessages from './DocumentMessages'
 
 export default function createMain(plugin: TldrawPlugin, el: HTMLElement) {
 	const mainDiv = el.createDiv(undefined, (el) => {
-		el.id = 'ptl-app-root'
+		el.id = 'ptlc-app-root'
 		el.append(el.doc.createComment('tldraw in Obsidian'))
 	})
 	const main = createRoot(mainDiv.createDiv(undefined))
